@@ -1,7 +1,14 @@
-function App() {
-   return (
-    <h1> Hello, World! </h1>
-  )
-}
+import React from 'react';
+import { Header } from './componentes/Header/index';
+import { Body } from './componentes/Body/index';
 
-export default App
+export function App() {
+	return (
+	<>
+
+		<Header />
+		<Body />
+
+	</>
+	)
+}
