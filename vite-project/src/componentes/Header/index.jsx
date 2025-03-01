@@ -1,9 +1,9 @@
-import './Header/style.css'
+import './style.css'
 
 export function Header() {
-
 	return (
 		<>
+
 			<nav>
 				<h1> Loja de Relógio </h1>
 				<img />
@@ -17,6 +17,7 @@ export function Header() {
 					<li> Relógio de mesa </li>
 				</ul>
 			</nav>
+
 		</>
 	)
 	}
