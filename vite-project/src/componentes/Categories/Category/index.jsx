@@ -1,19 +1,22 @@
-import { CategoryContainer } from './style'
+// as Style significa importar todos os arquivos CSS do style.js
+// Style.CategoryContainer: dessa forma eu não preciso utilizar DIV, importo direto e demonstro que o arquivo é de estilo.
+// url${ imageUrl } => utilizar uma template string dentro no style inline.
+
+import * as Style from './style'
 
 export function Category({ category }) {
-	const { title } = category
+	const { title, imageUrl } = category
 
 	return (
 
-		<CategoryContainer>
-
-			<div className='imagem-background' />
-			<div className='category-body-container'>
+		<Style.CategoryContainer>
+			<Style.ImageBackground style={{ backgroundImage: `url(${ imageUrl })` }} />
+			<Style.CategoryContent>
 				<h2> {title} </h2>
 				<p> Comprar agora </p>
-			</div>
+			</Style.CategoryContent>
 
-	</CategoryContainer>
+	</Style.CategoryContainer>
 )
 }
 

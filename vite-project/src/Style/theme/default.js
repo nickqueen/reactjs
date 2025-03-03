@@ -11,6 +11,9 @@ export const defaultTheme = {
     textLight: '#fff',
     textLighter: '#ccc',
     textLightest: '#999',
-    border: '#ccc'
+    border: '#ccc',
+		black: '#000',
+		white: '#fff',
+		'gray': '#919ba7'
   }
 }

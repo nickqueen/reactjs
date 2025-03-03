@@ -1,10 +1,12 @@
 import { Category } from './Category';
+import './style.css'
+import IMGfeminino from '../../assets/img/feminino.jpg'
 
 const categories = [
   {
     "id": 1,
     "title": "Feminino",
-    "imageUrl": "https://i.ibb.co/cvpntL1/hats.png"
+    "imageUrl": <img src= { IMGfeminino } />
   },
 
   {
@@ -29,7 +31,7 @@ const categories = [
 
 export function Categories () {
 	return (
-		<div>
+		<div className='container-home'>
 			{
 				categories.map((category) => {
 					return <Category category={category} />
