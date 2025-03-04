@@ -1,4 +1,4 @@
-export const categoriesPreview ( {title, products} ) {
+export const categoriesPreview({ title, products })
 	return (
 		<div>
 			<h2> {title} </h2>
@@ -7,4 +7,3 @@ export const categoriesPreview ( {title, products} ) {
 			</div>
 		</div>
 	)
-}

@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { getCategories } from '../../utils/firebase'
 import { Categories } from '../../Componentes/Categories'
 import { getCategoriesCollections } from '../../utils/firebase'
-import {categoriesPreview} from '../../Componentes/CategoriesPreview'
-
+import { Auth } from '../Auth'
+import { categoriesPreview } from '../../Componentes/categoriesPreview'
 
 export function Shop () {
 	const [getCategories, setCategories] = useState({})
@@ -25,11 +25,10 @@ export function Shop () {
 		</div>
 
 		<div>
-			{Object.keys(categories).map((title) => {
+			{Object.keys(Categories).map((title) => {
 				return <categoriesPreview key={title} title={title} />
 			})}
 		</div>
 		</>
 	)
-
 }

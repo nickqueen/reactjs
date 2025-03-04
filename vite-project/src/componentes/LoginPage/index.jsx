@@ -5,6 +5,9 @@
 import { useState } from 'react';
 import { FormInput } from '../UI/FormInput';
 import './style.css';
+import { confirmPasswordReset } from 'firebase/auth';
+import { createAuthUserWithEmailPassword } from '../../utils/firebase';
+
 
 const defaultFormFields = {
   email: '',
@@ -12,23 +15,30 @@ const defaultFormFields = {
 }
 
 export function LoginPage () {
-  const [formFields, setFormFields] = useState(defaultFormFields);
-  const { email, password } = formFields;
+  const [formFields, setFormFields] = useState(defaultFormFields)
+  const { email, password } = formFields
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
+    const { name, value } = event.target
+    setFormFields({ ...formFields, [name]: value })
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('E-mail: ', email);
-    console.log('Senha: ', password);
-    resetFormFields();
-  }
+    event.preventDefault()
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
+		if (password !== confirmPassword) {
+			toast.warn('Senhas não correspondem. Tente novamente.')
+			return
+		}
+
+		try {
+			const { user } = createAuthUserWithEmailPassword(email, password)
+			console.log ('User')
+			setFormFields(defaultFormFields)
+
+		} catch (error) {
+		console.log(error)
+		}
   }
 
   return (

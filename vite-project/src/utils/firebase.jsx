@@ -3,20 +3,27 @@
 //SnapShot -> copia os documentos
 
 import { initializeApp } from 'firebase/app'
-import { collection, doc, DocumentSnapshot, getDoc, getFirestore, query, writeBatch} from 'firebase/firestore'
+import {
+	collection,
+	doc,
+	getDoc,
+	getFirestore,
+	query,
+	writeBatch} from 'firebase/firestore'
+import { createAuthUserWithEmailPassword, getAuth } from 'firebase/auth'
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD9VHDgrXchQ4VKjDU5swD0ZNUTiac1Hh0",
-  authDomain: "loja-relogio.firebaseapp.com",
-  projectId: "loja-relogio",
-  storageBucket: "loja-relogio.firebasestorage.app",
-  messagingSenderId: "89460718611",
-  appId: "1:89460718611:web:32b9abf3e9a3d56a1013e6"
-}
+	const firebaseConfig = {
+		apiKey: import.meta.env.VITE_API_KEY,
+		authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+		projectId: import.meta.env.VITE_PROJECT_ID,
+		storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+		messagingSenderId: import.meta.env.VITE_MENSSAGING_SENDER_ID,
+		appId: import.meta.env.VITE_APP_ID
+	}
 
 export const app = initializeApp(firebaseConfig)
-
 export const db = getFirestore()
+export const auth = getAuth()
 
 export const addCollectionAndDocuments = async (collectionKey, objects) => {
 	const collectionRef = collection(db, collectionKey)
@@ -43,5 +50,10 @@ export const getCategories = async () => {
 	}, {})
 	return categoryMap
 }
-
 //reduce cria um novo array para cada categoria.
+
+export const createAuthUserWithEmailPassword = async (email, password) => {
+	if (!email || !password) return
+
+	return await createAuthUserWithEmailPassword(auth, email, password)
+}
