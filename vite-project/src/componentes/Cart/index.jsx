@@ -1,5 +1,7 @@
+//useEffect => trabalha para um efeito colateral. Ele executa a função quando o Array é acionado.
+
 import cartIcon from '../../assets/img/basket.svg'
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function Cart() {
 	const [cartCount, setCartCount] = useState(0)

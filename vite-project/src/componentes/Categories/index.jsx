@@ -1,4 +1,4 @@
-import { Category } from './Category';
+import { Category } from '../Category';
 import './style.css'
 import IMGfeminino from '../../assets/img/feminino.jpg'
 
@@ -6,10 +6,10 @@ const categories = [
   {
     "id": 1,
     "title": "Feminino",
-    "imageUrl": <img src= { IMGfeminino } />
+    "imageUrl": '<img src= { IMGfeminino } />'
   },
 
-  {
+	{
     "id": 2,
     "title": "Masculino",
     "imageUrl": "https://i.ibb.co/px2tCc3/jackets.png"
