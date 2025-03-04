@@ -29,14 +29,12 @@ const categories = [
 
 ]
 
-export function Categories () {
-	return (
-		<div className='container-home'>
-			{
-				categories.map((category) => {
-					return <Category category={category} />
-			})}
-
-		</div>
+export function Categories() {
+  return (
+    <div className='container-home'>
+      {categories.map((category, index) => {
+        return <Category key={index} category={category} />;
+      })}
+    </div>
 	)
 }

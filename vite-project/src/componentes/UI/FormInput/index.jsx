@@ -1,9 +1,9 @@
+import './style.css'
 
 export function FormInput({ label, ...otherProps }) {
 	return (
-		<div>
-			<label>{label}</label>
-			<input {...otherProps} />
+		<div className='group'>
+			<input {...otherProps} className='form-input' />
 		</div>
 	)
 }

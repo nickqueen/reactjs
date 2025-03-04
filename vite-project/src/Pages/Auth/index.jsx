@@ -1,9 +1,15 @@
-//chamar login e cadastro
+//chamar cadastro e login
 
-import { Register } from '../../Componentes/register';
+import { LoginPage } from '../../Componentes/LoginPage'
+import { Register } from '../../Componentes/Register'
+import './style.css'
 
 export function Auth() {
 	return (
+		<div className='auth-container'>
+		<LoginPage />
 		<Register />
+		</div>
 	)
 }
+

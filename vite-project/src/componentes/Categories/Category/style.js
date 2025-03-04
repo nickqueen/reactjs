@@ -50,5 +50,12 @@ p {
 	font-size: 16px;
 	color: ${(props) => props.theme.colors.white};
 }
+
+	&:hover {
+	cursor: pointer;
+	background-color: ${(props) => props.theme.colors.white};
+	color:rgb(30, 29, 29);
+	font-size: 22px;
+}
 `
 

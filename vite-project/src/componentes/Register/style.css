@@ -1,0 +1,27 @@
+.sign-up-container {
+	display: flex;
+  flex-direction: column;
+  width: 380px;
+
+h2 {
+  margin: 10px 0;
+}
+
+.buttons-container-registrer {
+	min-width: 165px;
+	width: auto;
+	height: 50px;
+	font-size: 15px;
+	background-color: #a9a9a9;
+	color: white;
+	font-weight: 700;
+	border: none;
+
+	&:hover {
+		background-color: white;
+		color: #a9a9a9;
+		border: 2px solid #a9a9a9;
+		cursor: pointer;
+	}
+	}
+}

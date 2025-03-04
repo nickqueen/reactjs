@@ -5,8 +5,9 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { FormInput } from '../UI/FormInput'
+import './style.css'
 
-const defaultFormFilds = {
+const defaultFormFields = {
 	name: '',
 	email: '',
 	password: '',
@@ -14,38 +15,66 @@ const defaultFormFilds = {
 }
 
 export function Register() {
-	const [formFilds, setFormFilds] = useState(defaultFormFilds)
+  const [formFields, setFormFields] = useState(defaultFormFields)
+  const { name, email, password, confirmPassword } = formFields
 
-	const {name, email, password, confirmPassword}= formFilds
-
-	const handleChange = (event) => {
-		const { name, value } = event.target
-		setFormFilds({ ...formFilds, [name]: value })
-	}
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setFormFields({ ...formFields, [name]: value })
+  }
 
 	const handleSubmit = (event) => {
-		event.preventDefault()
+    event.preventDefault()
 
-		if (password !== confirmPassword) {
-			toast.warn ('Senhas não conferem. Por favor, tente novamente.')
-		}
+	if (password !== confirmPassword) {
+		toast.warn ('Senhas não conferem. Por favor, tente novamente.')
+	}
 
-		console.log(formFilds)
-		setFormFilds(defaultFormFilds)
+		console.log(formFields)
+		setFormFields(defaultFormFields)
 	}
 
 	return (
-		<>
-		<h2> Cadastre-se aqui </h2>
-		<form onSubmit = {handleSubmit}>
+    <div className='sign-up-container'>
+      <h2>Cadastre-se aqui</h2>
+      <span>
+        Para comprar e saber mais sobre nossos produtos, faça sua conta
+        utilizando seu e-mail.
+      </span>
 
-			<FormInput label='Nome' type='text' placeholder='Digite seu nome' value= {name} name='name' onChange={handleChange}/>
-			<FormInput label='E-mail' type='email' placeholder='Digite seu e-mail' value= {email} name='email' onChange={handleChange} />
-			<FormInput label='Senha' type='password' placeholder='Digite sua senha' value= {password} name='password' onChange={handleChange} />
-			<FormInput label='Confirmar senha' type='password' placeholder='Confirme sua senha' value= {confirmPassword} name='confirmPassword' onChange={handleChange} />
-			<button type='submit'> Criar conta </button>
-		</form>
-
-		</>
-	)
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          type='text'
+          placeholder='Nome'
+          value={name}
+          name='name'
+          onChange={handleChange}
+        />
+        <FormInput
+          type='email'
+          placeholder='E-mail'
+          value={email}
+          name='email'
+          onChange={handleChange}
+        />
+        <FormInput
+          type='password'
+          placeholder='Senha'
+          value={password}
+          name='password'
+          onChange={handleChange}
+        />
+        <FormInput
+          type='password'
+          placeholder='Confirme sua senha'
+          value={confirmPassword}
+          name='confirmPassword'
+          onChange={handleChange}
+        />
+        <button className='buttons-container-registrer' type='submit'>
+          Criar conta
+        </button>
+      </form>
+    </div>
+  )
 }

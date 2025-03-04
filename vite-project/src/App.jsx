@@ -1,17 +1,19 @@
 import React from 'react'
 import { Header } from './componentes/Header/index'
 import { Auth } from './Pages/Auth'
-import { Categories } from './Componentes/Categories'
+import { Home } from './Pages/Home'
+import { Shop } from './Pages/Shop'
+import { Route, Routes } from 'react-router-dom'
+
 
 export function App() {
 	return (
-	<>
-
-		<Header />
-		<Auth />
-		<Categories />
-
-
-	</>
+		<Routes>
+			<Route path='/' element={<Header />}>
+				<Route index element={<Home />} />
+				<Route path='auth' element={<Auth />} />
+				<Route path='shop' element={ <Shop />} />
+		</Route>
+		</Routes>
 	)
 }
