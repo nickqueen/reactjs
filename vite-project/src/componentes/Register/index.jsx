@@ -1,7 +1,10 @@
 //onChang => pega todas os caracteres digitados no input.
 // event.preventDefault => evitar que o formulário dê reload na tela.
+//toast.warn deixa o alerta mais estilizado.
 
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { FormInput } from '../UI/FormInput'
 
 const defaultFormFilds = {
 	name: '',
@@ -24,7 +27,7 @@ export function Register() {
 		event.preventDefault()
 
 		if (password !== confirmPassword) {
-			alert('Senhas não conferem. Por favor, tente novamente.')
+			toast.warn ('Senhas não conferem. Por favor, tente novamente.')
 		}
 
 		console.log(formFilds)
@@ -35,11 +38,12 @@ export function Register() {
 		<>
 		<h2> Cadastre-se aqui </h2>
 		<form onSubmit = {handleSubmit}>
-		<input type='text' placeholder='Digite seu nome' value= {name} name='name' onChange={handleChange} />
-		<input type='email' placeholder='Digite seu e-mail' value= {email} name='email' onChange={handleChange} />
-		<input type='password' placeholder='Digite sua senha' value= {password} name='password' onChange={handleChange} />
-		<input type='password' placeholder='Confirme sua senha' value= {confirmPassword} name='confirmPassword' onChange={handleChange} />
-		<button type='submit'> Criar conta </button>
+
+			<FormInput label='Nome' type='text' placeholder='Digite seu nome' value= {name} name='name' onChange={handleChange}/>
+			<FormInput label='E-mail' type='email' placeholder='Digite seu e-mail' value= {email} name='email' onChange={handleChange} />
+			<FormInput label='Senha' type='password' placeholder='Digite sua senha' value= {password} name='password' onChange={handleChange} />
+			<FormInput label='Confirmar senha' type='password' placeholder='Confirme sua senha' value= {confirmPassword} name='confirmPassword' onChange={handleChange} />
+			<button type='submit'> Criar conta </button>
 		</form>
 
 		</>

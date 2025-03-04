@@ -1,4 +1,5 @@
-//o stilo sempre lê de cima para baixo.
+//o estilo sempre lê de cima para baixo.
+//Toast Container é para estilizar os alertas da página.
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
