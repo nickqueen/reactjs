@@ -9,8 +9,9 @@ import {
 	getDoc,
 	getFirestore,
 	query,
+	setDoc,
 	writeBatch} from 'firebase/firestore'
-import { createAuthUserWithEmailPassword, getAuth } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 
 	const firebaseConfig = {
 		apiKey: import.meta.env.VITE_API_KEY,
@@ -55,5 +56,44 @@ export const getCategories = async () => {
 export const createAuthUserWithEmailPassword = async (email, password) => {
 	if (!email || !password) return
 
-	return await createAuthUserWithEmailPassword(auth, email, password)
+	return await createUserWithEmailAndPassword (auth, email, password)
 }
+
+export const createUserDocumentFromAuth = async (userAuth, info = {}) => {
+	if (!userAuth) return
+
+	const userDocRef = doc(db, 'users', userAuth.uid)
+	const userSnapShot = await getDoc(userDocRef)
+
+	if (!userSnapShot.exists()) {
+		const { email } = userAuth
+		const createdAt = new Date()
+
+		try {
+			await setDoc(userDocRef, {
+				email,
+				createdAt,
+				...info
+			})
+		} catch (e) {
+			console.error(e.message)
+		}
+	}
+
+	return userDocRef
+}
+
+export const signInAuthUserWithEmailPassword = async (email, password) => {
+	if (!email || !password) return
+
+	return await signInWithEmailAndPassword(auth, email, password)
+}
+
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
+
+export const singOutAuthUser = async () => {
+	await signOut(auth)
+}
+
+export const onAuthStateChangeListener = (callback) =>
+	onAuthStateChanged(auth, callback)

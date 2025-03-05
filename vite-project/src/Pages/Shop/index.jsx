@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCategories } from '../../utils/firebase'
 import { Categories } from '../../Componentes/Categories'
-import { getCategoriesCollections } from '../../utils/firebase'
-import { Auth } from '../Auth'
-import { categoriesPreview } from '../../Componentes/categoriesPreview'
 
 export function Shop () {
 	const [getCategories, setCategories] = useState({})

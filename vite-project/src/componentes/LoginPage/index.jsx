@@ -5,8 +5,11 @@
 import { useState } from 'react';
 import { FormInput } from '../UI/FormInput';
 import './style.css';
-import { confirmPasswordReset } from 'firebase/auth';
-import { createAuthUserWithEmailPassword } from '../../utils/firebase';
+import {
+	signInAuthUserWithEmailPassword,
+	signInWithGooglePopup
+} from '../../utils/firebase'
+import { toast } from 'react-toastify'
 
 
 const defaultFormFields = {
@@ -23,52 +26,64 @@ export function LoginPage () {
     setFormFields({ ...formFields, [name]: value })
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-
-		if (password !== confirmPassword) {
-			toast.warn('Senhas não correspondem. Tente novamente.')
-			return
-		}
+  const handleSubmit = async (event) => {
+		event.preventDefault()
 
 		try {
-			const { user } = createAuthUserWithEmailPassword(email, password)
-			console.log ('User')
-			setFormFields(defaultFormFields)
-
+			await signInAuthUserWithEmailPassword(email, password)
+			toast.success('Login efetuado com sucesso!')
 		} catch (error) {
-		console.log(error)
+			if (error.code === 'auth/invalid-credential') {
+				toast.error('E-mail ou senha invalidos')
+			}
 		}
-  }
 
-  return (
-    <div className='login-container'>
-      <h2> Entre na sua conta. </h2>
-      <span> Utilizando login e senha cadastrados, acesse sua conta.</span>
+		resetFormFields()
+	}
 
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          type='email'
-          required
-          placeholder='E-mail'
-          name='email'
-          value={email}
-          onChange={handleChange}
-        />
-        <FormInput
-          type='password'
-          required
-          placeholder='Senha'
-          name='password'
-          value={password}
-          onChange={handleChange}
-        />
-      </form>
+	const signInWithGoogle = async () => {
+		await signInWithGooglePopup()
+	}
 
-      <div className='buttons-container'>
-        <button className='buttons-container-login' type='submit'> Entrar </button>
-        <button className='buttons-container-login'> Entrar conta Gmail </button>
-      </div>
-    </div>
-  )
+	const resetFormFields = () => {
+		setFormFields(defaultFormFields)
+	}
+
+	return (
+		<div className='login-container'>
+			<h2>Já possui conta?</h2>
+			<span>Faça o login utilizando seu e-mail e senha</span>
+			<form onSubmit={handleSubmit}>
+				<FormInput
+					label="E-mail"
+					type="email"
+					requerid
+					onChange={handleChange}
+					name="email"
+					value={email}
+				/>
+				<FormInput
+					label="Senha"
+					type="password"
+					requerid
+					onChange={handleChange}
+					name="password"
+					value={password}
+				/>
+
+				<div className="buttons-container">
+					<button className="buttons-container-login" type="submit">
+						Login
+					</button>
+					<button
+						type="button"
+						onClick={signInWithGoogle}
+						className="buttons-container-login"
+					>
+						Login com Google
+					</button>
+				</div>
+			</form>
+		</div>
+	)
 }
