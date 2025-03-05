@@ -51,8 +51,8 @@ export function Register() {
 
 	return (
 		<div className="sign-up-container">
-			<h2>Não possui conta?</h2>
-			<span>Criei sua conta utilizando seu e-mail e senha</span>
+			<h2> Cadastre-se </h2>
+			<span> Para realizar sua compra é necessário cadastrar um usuário, utilizando e-mail e senha. </span>
 			<form onSubmit={handleSubmit}>
 				<FormInput
 					label="Nome"

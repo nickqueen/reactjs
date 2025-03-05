@@ -12,10 +12,8 @@ export function Shop () {
   getCategories()
 	}, [])
 
-	console.log (Categories)
-
 	return (
-		<>
+		<div>
 		<div>
 			<h1> Compras </h1>
 		</div>
@@ -25,6 +23,6 @@ export function Shop () {
 				return <categoriesPreview key={title} title={title} />
 			})}
 		</div>
-		</>
+		</div>
 	)
 }

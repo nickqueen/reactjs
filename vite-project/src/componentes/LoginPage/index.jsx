@@ -55,32 +55,34 @@ export function LoginPage () {
 			<span>Faça o login utilizando seu e-mail e senha</span>
 			<form onSubmit={handleSubmit}>
 				<FormInput
-					label="E-mail"
-					type="email"
+					label='E-mail'
+					placeholder='E-mail'
+					type='email'
 					requerid
 					onChange={handleChange}
-					name="email"
+					name='email'
 					value={email}
 				/>
 				<FormInput
-					label="Senha"
-					type="password"
+					label='Senha'
+					placeholder='Senha'
+					type='password'
 					requerid
 					onChange={handleChange}
-					name="password"
+					name='password'
 					value={password}
 				/>
 
-				<div className="buttons-container">
-					<button className="buttons-container-login" type="submit">
+				<div className='buttons-container'>
+					<button className='buttons-container-login' type='submit'>
 						Login
 					</button>
 					<button
-						type="button"
-						onClick={signInWithGoogle}
-						className="buttons-container-login"
+						type='button'
+						onClick={signInWithGooglePopup}
+						className='buttons-container-login'
 					>
-						Login com Google
+						Acesse com o Google
 					</button>
 				</div>
 			</form>

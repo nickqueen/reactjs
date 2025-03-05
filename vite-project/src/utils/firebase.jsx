@@ -11,7 +11,7 @@ import {
 	query,
 	setDoc,
 	writeBatch} from 'firebase/firestore'
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider } from 'firebase/auth'
 
 	const firebaseConfig = {
 		apiKey: import.meta.env.VITE_API_KEY,
@@ -25,6 +25,13 @@ import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 export const app = initializeApp(firebaseConfig)
 export const db = getFirestore()
 export const auth = getAuth()
+
+//fazer login com o Gmail
+
+const googleProvider = new GoogleAuthProvider
+googleProvider.setCustomParameters({
+	prompt: 'select_account'
+})
 
 export const addCollectionAndDocuments = async (collectionKey, objects) => {
 	const collectionRef = collection(db, collectionKey)
@@ -88,6 +95,8 @@ export const signInAuthUserWithEmailPassword = async (email, password) => {
 
 	return await signInWithEmailAndPassword(auth, email, password)
 }
+
+//login pelo gmail
 
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 
