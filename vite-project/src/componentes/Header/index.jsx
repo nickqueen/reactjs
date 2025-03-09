@@ -6,6 +6,7 @@ import { Link, Outlet } from 'react-router-dom'
 import { Cart } from '../Cart'
 import { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
+import { singOutAuthUser } from '../../utils/firebase'
 
 export function Header() {
 
@@ -27,7 +28,7 @@ export function Header() {
 			</Style.LogoContainer>
 			<Style.LinksNav>
 				<Link to='shop'> Comprar </Link>
-				{	currentUser ? <Link> Logout </Link>: <Link to='auth'> Login </Link> }
+				{	currentUser ? <Link onClick={singOutAuthUser}> Logout </Link>: <Link to='auth'> Login </Link> }
 				</Style.LinksNav>
 
 				<div>

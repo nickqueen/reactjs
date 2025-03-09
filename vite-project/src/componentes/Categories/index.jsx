@@ -1,30 +1,29 @@
 import { Category } from '../Category';
 import './style.css'
-import IMGfeminino from '../../assets/img/feminino.jpg'
 
 const categories = [
   {
     "id": 1,
     "title": "Feminino",
-    "imageUrl": '<img src= { IMGfeminino } />'
+    "imageUrl": 'https://i.ibb.co/mVLND4XC/feminino.jpg'
   },
 
 	{
     "id": 2,
     "title": "Masculino",
-    "imageUrl": "https://i.ibb.co/px2tCc3/jackets.png"
+    "imageUrl": "https://i.ibb.co/0VvNbH2y/masculino.jpg"
   },
 
   {
     "id": 3,
     "title": "Ambiente Social",
-    "imageUrl": "https://i.ibb.co/0jqHpnp/sneakers.png"
+    "imageUrl": "https://i.ibb.co/5hqHygL0/social.jpg"
   },
 
   {
     "id": 4,
     "title": "Ambiente Empresarial",
-    "imageUrl": "https://i.ibb.co/GCCdy8t/womens.png"
+    "imageUrl": "https://i.ibb.co/YTRLc3J5/empresa.jpg"
   }
 
 ]
