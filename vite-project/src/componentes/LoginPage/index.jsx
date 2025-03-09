@@ -31,10 +31,11 @@ export function LoginPage () {
 
 		try {
 			await signInAuthUserWithEmailPassword(email, password)
-			toast.success('Login efetuado com sucesso!')
+			console.log(user)
+			toast.success('Seja bem-vindo')
 		} catch (error) {
 			if (error.code === 'auth/invalid-credential') {
-				toast.error('E-mail ou senha invalidos')
+				toast.error('E-mail ou senha inválidos. Tente novamente.')
 			}
 		}
 

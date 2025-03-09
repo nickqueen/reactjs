@@ -41,10 +41,9 @@ export function Register() {
 			await createUserDocumentFromAuth(user, { name })
 			toast.success('Usuário cadastrado com sucesso!')
 			setFormFields(defaultFormFields)
-
 		} catch (error) {
 			if (error.code === 'auth/email-already-in-use') {
-				toast.error('E-mail já cadastrado')
+				toast.error('E-mail já cadastrado.')
 			}
 		}
 	}

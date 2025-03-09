@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './Style/theme/default.js'
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter} from 'react-router-dom'
-import { CounterProvider } from './Context/CounterContex.jsx'
+import { UserProvider } from './Componentes/Context/UserContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -18,9 +18,9 @@ createRoot(document.getElementById('root')).render(
 			<ThemeProvider theme={defaultTheme}>
 				<GlobalStyle />
 				<ToastContainer />
-				<CounterProvider>
+				<UserProvider>
 					<App />
-				</CounterProvider>
+				</UserProvider>
 			</ThemeProvider>
 		</BrowserRouter>
   </StrictMode>
