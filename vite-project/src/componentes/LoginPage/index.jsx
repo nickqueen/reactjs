@@ -59,7 +59,7 @@ export function LoginPage () {
 					label='E-mail'
 					placeholder='E-mail'
 					type='email'
-					requerid
+					required
 					onChange={handleChange}
 					name='email'
 					value={email}
@@ -68,7 +68,7 @@ export function LoginPage () {
 					label='Senha'
 					placeholder='Senha'
 					type='password'
-					requerid
+					required
 					onChange={handleChange}
 					name='password'
 					value={password}
