@@ -5,11 +5,10 @@ import IMGclock from '../../assets/img/clock.png'
 import { Link, Outlet } from 'react-router-dom'
 import { Cart } from '../Cart'
 import { useContext } from 'react'
-import { UserContext } from '../Context/UserContext'
-import { singOutAuthUser } from '../../utils/firebase'
+import { UserContext } from '../../Componentes/Context/UserContext'
+import { signOutAuthUser } from '../../utils/firebase'
 
 export function Header() {
-
 	const { currentUser } = useContext(UserContext)
 
 	return (
@@ -28,7 +27,10 @@ export function Header() {
 			</Style.LogoContainer>
 			<Style.LinksNav>
 				<Link to='shop'> Comprar </Link>
-				{	currentUser ? <Link onClick={singOutAuthUser}> Logout </Link>: <Link to='auth'> Login </Link> }
+
+				{/*login e Logout | técnica de renderização do componente*/}
+
+				{	currentUser ? <Link onClick={signOutAuthUser}> Logout </Link>: <Link to='auth'> Login </Link> }
 				</Style.LinksNav>
 
 				<div>

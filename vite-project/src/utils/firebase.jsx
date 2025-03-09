@@ -11,7 +11,7 @@ import {
 	query,
 	setDoc,
 	writeBatch} from 'firebase/firestore'
-import { onAuthStateChanged, createUserWithEmailAndPassword, getAuth, GoogleAuthProvider } from 'firebase/auth'
+import {signInWithPopup, onAuthStateChanged, createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signOut } from 'firebase/auth'
 
 	const firebaseConfig = {
 		apiKey: import.meta.env.VITE_API_KEY,
@@ -90,6 +90,8 @@ export const createUserDocumentFromAuth = async (userAuth, info = {}) => {
 	return userDocRef
 }
 
+//login
+
 export const signInAuthUserWithEmailPassword = async (email, password) => {
 	if (!email || !password) return
 
@@ -102,10 +104,11 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 
 //logout
 
-export const singOutAuthUser = async () => {
+export const signOutAuthUser = async () => {
 	await signOut(auth)
 }
 
 //monitora o estado de autenticação do usuário. Quando ele faz login e/ou logout
 
-export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, callback)
+export const onAuthStateChangeListener = (callback) =>
+	onAuthStateChanged(auth, callback)

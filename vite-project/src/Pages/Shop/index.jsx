@@ -5,12 +5,17 @@ export function Shop () {
 	const [getCategories, setCategories] = useState({})
 
 	useEffect(() => {
-		const getCategories = async () => {
-			const category = await getCategoriesCollections ()
-		}
+    const getCategories = async () => {
+      try {
+        const fetchedCategories = await getCategoriesCollections()
+        setCategories(fetchedCategories) // Armazena as categorias no estado
+      } catch (error) {
+        console.error("Erro ao obter categorias:", error)
+      }
+    }
 
-  getCategories()
-	}, [])
+    getCategories()
+  }, [])
 
 	return (
 		<div>
